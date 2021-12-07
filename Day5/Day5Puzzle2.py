@@ -52,6 +52,7 @@ for i in range(len(lines)):
                 for i in range(1, end_y - start_y):
                     vents.append((start_x + i, start_y + i))
         
+file.close()
 
 counts = np.asarray(list(Counter(vents).values()))
 print(len((counts[counts > 1])))

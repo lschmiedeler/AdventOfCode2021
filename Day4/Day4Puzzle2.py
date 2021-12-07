@@ -30,6 +30,7 @@ for i in range(len(boards)):
         boards[i][j] = int(boards[i][j])
 
 marked_boards = deepcopy(boards)
+scores = []
 
 def check_bingo(marked_boards, bingo_boards):
     new_bingo_boards = []
@@ -40,14 +41,14 @@ def check_bingo(marked_boards, bingo_boards):
                 if row.count("x") == 5:
                     sum_unmarked = sum([marked_boards[j][l] for l, x in enumerate(marked_boards[j]) if x != "x"])
                     new_bingo_boards.append(j)
-                    print(j, sum_unmarked)
+                    scores.append(sum_unmarked)
             for k in [0, 1, 2, 3, 4]:
                 indices = [k, k + 5, k + 10, k + 15, k + 20]
                 column = [marked_boards[j][l] for l in indices]
                 if column.count("x") == 5:
                     sum_unmarked = sum([marked_boards[j][l] for l, x in enumerate(marked_boards[j]) if x != "x"])
                     new_bingo_boards.append(j)
-                    print(j, sum_unmarked)
+                    scores.append(sum_unmarked)
     return set(new_bingo_boards)
 
 bingo_boards = []
@@ -63,5 +64,5 @@ for i in range(len(draw_numbers)):
             for new in new_bingo_boards:
                 bingo_boards.append(new)
         if len(bingo_boards) == len(marked_boards):
-            print(draw_numbers[i])
+            print(draw_numbers[i] * scores[-1])
             break

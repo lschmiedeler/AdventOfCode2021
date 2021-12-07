@@ -53,3 +53,4 @@ for i in range(len(draw_numbers)):
     if i >= 5:
         if check_bingo(marked_boards) > 0:
             print(check_bingo(marked_boards) * draw_numbers[i])
+            break
