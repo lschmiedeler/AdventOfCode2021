@@ -8,7 +8,6 @@ for (i in 1:128) {
   ages <- ifelse(ages == 0, 6, ages - 1)
   ages <- c(ages, add)
 }
-# length(ages)
 
 unique_ages <- sort(unique(as.numeric(ages)))
 num_fish <- sapply(unique_ages, function(x) {
@@ -26,4 +25,4 @@ table_ages <- as.numeric(as.matrix(table(ages)))
 table_ages <- as.numeric(table_ages)
 num_fish <- as.numeric(num_fish)
 
-as.int64(num_fish * table_ages)
+as.int64(num_fish * table_ages) # sum these values
