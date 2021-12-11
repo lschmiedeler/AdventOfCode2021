@@ -13,9 +13,8 @@ adjacent <- as.data.frame(adjacent(r, cells = 1:n_cells, sorted = TRUE, directio
 input_vector <- as.vector(input)
 
 all_flash <- function(input_vector) {
-  no_sim <- TRUE
   n_steps <- 0
-  while (no_sim) {
+  while (TRUE) {
     input_vector <- input_vector + 1
     flash <- input_vector > 9
     if (sum(flash) > 0) {
