@@ -1,4 +1,3 @@
-library(igraph)
 library(tidyverse)
 
 input <- read.csv("Day12Input.txt", header = FALSE, colClasses = c("character"))
