@@ -11,23 +11,6 @@ input <- filter(rbind(input, as.data.frame(t(apply(input, MARGIN = 1, function(x
   return(new_row)
 })))), V1 != "end", V2 != "start")
 
-all_nodes <- unique(as.vector(t(input)))
-remove <- c()
-for (node in all_nodes){
-  if (node != "start" & node != "end" & node == tolower(node)) {
-    to_nodes <- filter(input, V1 == node)$V2
-    to_nodes <- to_nodes[!(to_nodes %in% c("start", "end"))]
-    if (all(to_nodes == tolower(to_nodes))) {
-      remove <- c(remove, node)
-    }
-  }
-}
-
-input <- filter(input, !(V1 %in% remove), !(V2 %in% remove))
-
-# g <- graph(as.vector(t(input)), directed = FALSE)
-# plot(g)
-
 n_paths <<- 0
 find_paths <- function(node, path) {
   path <- c(path, node)
@@ -49,6 +32,5 @@ find_paths <- function(node, path) {
     }
   }
 }
-
 find_paths("start", c())
 print(n_paths)
