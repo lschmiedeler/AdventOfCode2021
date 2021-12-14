@@ -38,4 +38,5 @@ for (i in 1:nrow(folds)) {
 points <- as.data.frame(points)
 ggplot(points, aes(x = x, y = y)) +
   geom_point(size = 5) +
-  ylim(max(points$y), 0)
+  ylim(max(points$y), 0) +
+  theme_minimal()

@@ -22,11 +22,11 @@ close(conn)
 
 direction <- folds[1,]$direction
 line <- as.numeric(folds[1,]$line)
-nrow(unique(t(apply(points, MARGIN = 1, function(x) {
+print(nrow(unique(t(apply(points, MARGIN = 1, function(x) {
   if (direction == "x") { i <- 1 }
   else {i <- 2}
   if (x[i] > line) {
     x[i] <- x[i] - 2 * abs(line - x[i])
   }
   return(x)
-}))))
+})))))
